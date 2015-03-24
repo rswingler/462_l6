@@ -11,9 +11,22 @@ ruleset see_songs
 
   rule songs is active 
   {
-    select when echo message input "(.*)" setting(m)
+    //select when echo message input "(.*)" setting(m)
+    select when echo message msg_type re/song/ setting(m)
     send_directive("sing") with
       song = m;
+    always 
+    {
+        raise explicit event 'sung' with
+        song = m;
+    }
+
   }
+
+
+  //rule find_hymn is active
+  //{
+  //    select when explicit sung
+  //}
  
 }

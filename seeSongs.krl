@@ -27,18 +27,19 @@ ruleset see_songs
   rule find_hymn is active
   {
       select when explicit sung song "(.*)" setting(m)
-      send_directive("mySong") with
-          debug = m;
-      //pre
-      //{
-      //    song = event:attr("song");
-      //}
+      //send_directive("mySong") with
+      //    debug = m;
+      pre
+      {
+          hymn = event:attr("song");
+      }
 
       always
       {
           raise explicit event 'found_hymn' 
             if (m.match(re/god/i));
-          log "**** HYMN: " + m
+          log "**** HYMN WAS FOUND: " + hymn
+            if (m.match(re/god/i));
       }
   }
  

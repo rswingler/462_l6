@@ -24,9 +24,21 @@ ruleset see_songs
   }
 
 
-  //rule find_hymn is active
-  //{
-  //    select when explicit sung
-  //}
+  rule find_hymn is active
+  {
+      select when explicit sung
+      pre
+      {
+          song = event:attr("song");
+      }
+
+      always
+      {
+          raise explicit event 'found_hymn' if (song.match(re/god/i));
+          log "**** song: " + song
+          //send_directive("debugging") with
+           // value = song;
+      }
+  }
  
 }

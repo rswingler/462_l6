@@ -37,9 +37,9 @@ ruleset see_songs
       always
       {
           raise explicit event 'found_hymn' 
-            if (m.match(re/god/i));
+            if (hymn.match(re/god/i));
           log "**** HYMN WAS FOUND: " + hymn
-            if (m.match(re/god/i));
+            if (hymn.match(re/god/i));
       }
   }
  

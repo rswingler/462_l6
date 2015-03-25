@@ -15,7 +15,7 @@ ruleset see_songs
     select when echo message msg_type re/song/ setting(m)
     send_directive("sing") with
       song = m;
-    always 
+    always
     {
         raise explicit event 'sung' with
         song = m;
@@ -23,23 +23,14 @@ ruleset see_songs
 
   }
 
-
   rule find_hymn is active
   {
-      select when explicit sung song "(.*)" setting(m)
-      //send_directive("mySong") with
-      //    debug = m;
-      //pre
-      //{
-       //   hymn = event:attr("song");
-      //}
+      select when explicit sung song re/god/
 
       always
       {
-          raise explicit event 'found_hymn' 
-            if ( m like re/god/i);
-          log "**** HYMN WAS FOUND: " + m
-            //if (hymn.match(re/god/i));
+          raise explicit event 'found_hymn';
+          log "***** HYMN WAS FOUND";
       }
   }
  

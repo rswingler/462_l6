@@ -6,8 +6,8 @@ ruleset song_store
     description << Lab 6 Part 3 >>
     author "Bobby Swingler"
     logging on
-    sharing on 
-    provides songsList, hymns, secular_music
+    sharing off
+    provides songs, hymns, secular_music
   }
 
   global 

@@ -7,7 +7,7 @@ ruleset song_store
     author "Bobby Swingler"
     logging on
     sharing on 
-    provides songs, hymns, secular_music
+    provides songsList, hymns, secular_music
   }
 
   global 
